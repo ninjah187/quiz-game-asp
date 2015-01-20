@@ -1,0 +1,17 @@
+﻿@model List<QuizGameASP.Models.Category>
+
+<div id="category-container">
+@{
+    foreach (var category in Model)
+    {
+        <div class="category-form">
+            @{
+                string url = "/Game/Questions/" + category.Name;
+                <button class="category-button">@category.Name</button>
+            }
+       </div>
+    }
+}
+</div>
+
+<script src="/Scripts/CategoryChooseScripts.js"></script>

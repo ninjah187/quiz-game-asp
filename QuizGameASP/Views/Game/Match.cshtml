@@ -1,0 +1,199 @@
+﻿@model QuizGameASP.Models.Match
+
+@{
+    ViewBag.Title = "Match";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    h2 {
+        text-align: center;
+    }
+
+    h4.match-player-name {
+        background-color: cadetblue;
+    }
+
+     #match-container {
+         width: 100%;
+         height: 400px;
+         margin-left: auto;
+         margin-right: auto;
+         background-color: #fffa00;
+         display: flex;
+         flex-flow: row;
+     }
+
+    .match-player {
+        width: 50%;
+        background-color: #008b8b;
+        text-align: center;
+    }
+
+    #p1.match-player {
+        background-color: #b22222;/*chartreuse;*/
+    }
+
+    #p2.match-player {
+        background-color: #b22222;
+    }
+
+    .match-round-name {
+        width: 100%;
+        background-color: azure;
+        margin-top: 10px;
+        margin-bottom: 0px;
+    }
+
+    .match-round-answer-bar {
+        width: 100%;
+        background-color: cyan;
+        height: 10px;
+    }
+
+    .match-current-player {
+        width: 50%;
+        background-color: blue;
+        text-align: center;
+    }
+
+    .match-current-round {
+        color: red;
+    }
+</style>
+
+<h2>Match #@Model.ID</h2>
+
+<div id="container">
+
+<div id="match-container">
+
+    <div class="match-player" id="p1">
+        <h4 class="match-player-name">@Model.Player1.Login</h4>
+        @foreach (var round in Model.Rounds)
+        {
+            string className = "r" + round.ID.ToString();
+            <div class="match-round-container @className">
+                <div class="match-round-name">Round @round.ID</div>
+                <div class="match-round-answer-bar"></div>
+            </div>
+        }
+    </div>
+
+    <div class="match-player" id="p2">
+        <h4 class="match-player-name">@Model.Player2.Login</h4>
+        @foreach (var round in Model.Rounds)
+        {
+            string className = "r" + round.ID.ToString();
+            <div class="match-round-container @className">
+                <div class="match-round-name">Round @round.ID</div>
+                <div class="match-round-answer-bar"></div>
+            </div>
+        }
+    </div>
+
+</div>
+
+</div>
+
+<script>
+    function setCurrentPlayer(playerID) {
+        $(playerID).removeClass("match-player");
+        $(playerID).addClass("match-current-player");
+    }
+
+    function setCurrentRound(roundID) {
+        var selector = "." + roundID;
+        $(selector).addClass("match-current-round");
+    }
+
+    function addCurrentRoundClickHandler(senderID, currentUserID) {
+        var eventHandler = function(sendID, curUserID) {
+            if (sendID == curUserID) {
+                //$(".match-current-round").parent().parent().hide("slow");
+                $("#match-container").hide("slow");
+                getCategories();
+            }
+        };
+        currentPlayer.children(".match-current-round").on("click",
+            function () { eventHandler(senderID, currentUserID) }
+            );
+    }
+
+    function getCategories() {
+        $.ajax({
+            url: "/Game/CategoryChoose/",
+            dataType: "html",
+            success: function(data) {
+                //$("#category-container").html(data);
+                //$("#category-container").show("slow");
+                $("#match-container").hide("slow");
+                $("#container").append(data);
+            },
+            error: function() {
+                alert("BŁĄD");
+            },
+            complete: function () {
+
+            }
+        });
+    }
+
+    @{
+        string playerID = "";
+        if (Model.CurrentPlayer == Model.Player1)
+        {
+            playerID = "#p1";
+        }
+        else
+        {
+            if (Model.CurrentPlayer == Model.Player2)
+            {
+                playerID = "#p2";
+            }
+        }
+    }
+
+    var currentPlayerID = "@playerID";
+    var currentPlayer = $(currentPlayerID);
+    setCurrentPlayer(currentPlayerID);
+
+    @{
+        string roundID = "";
+        roundID = Model.CurrentRound.ID.ToString();
+    }
+
+    var roundID = "r" + "@roundID";
+    setCurrentRound(roundID);
+
+    @{
+        //id gracza, który ma otwarty mecz
+        string senderID = ((QuizGameASP.Models.User) Session["User"]).ID.ToString();
+        
+        //zwykłe id current playera - gracza odgrywającego właśnie rundę
+        string currentUserID = Model.CurrentPlayer.ID.ToString();
+    }
+
+    var senderID = "@senderID";
+    var currentUserID = "@currentUserID";
+    addCurrentRoundClickHandler(senderID, currentUserID);
+
+    var matchID = "@Model.ID";
+</script>
+
+<!--<div id="match-container">
+    <div class="match-stats">
+        @{
+            int counter = 0;
+            foreach (var round in Model.Rounds)
+            {
+                <p>Round @counter++:</p>
+                
+            }
+        }
+    </div>
+    <div class="match-stats">
+
+    </div>
+</div>-->
+

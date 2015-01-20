@@ -1,0 +1,27 @@
+﻿@model QuizGameASP.Models.User
+
+@{
+    ViewBag.Title = "Menu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Html.DisplayFor(u => u.Login)</h2>
+
+<div id="menu-container">
+    <form action="/Matchmaking/JoinQueue?id=@Model.ID" method="post">
+        <button type="submit" class="menu-button">Nowa gra</button>
+    </form>
+</div>
+
+<script>
+    $.ajax({
+        url: "/Matchmaking/UserQueue/",
+        dataType: "html",
+        success: function (data) {
+            $("#menu-container").append(data);
+        },
+        error: function () {
+            alert("BŁĄD!");
+        }
+    });
+</script>

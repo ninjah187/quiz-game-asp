@@ -1,0 +1,56 @@
+﻿@model List<QuizGameASP.Models.Match>
+
+@{
+    ViewBag.Title = "ShowQueue";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Matchmaking Queue</h2>
+
+<table>
+    <tr>Player1</tr> <tr>Player2</tr>
+    @foreach (var match in Model)
+    {
+        string login1;
+        string login2;
+        if (match.Player1 != null)
+        {
+            login1 = match.Player1.Login;
+        }
+        else 
+        {
+            login1 = "null";
+        }
+        if (match.Player2 != null)
+        {
+            login2 = match.Player2.Login;
+        }
+        else
+        {
+            login2 = "null";
+        }
+        <td>@login1</td> <td>@login2</td>
+    }
+</table>
+
+<ul>
+    @foreach (var match in Model)
+    {
+        <li>@{
+            string text = match.Player1.Login;
+            text += " vs ";
+            if (match.Player2 == null)
+            {
+                text += "null";
+            }
+            else
+            {
+                text += match.Player2.Login;
+            }
+            text += " ID: " + match.ID;
+            @Html.DisplayFor(t => text);
+        }
+        </li>
+    }
+</ul>
+

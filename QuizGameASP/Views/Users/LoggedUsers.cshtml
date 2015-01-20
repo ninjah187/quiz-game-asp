@@ -1,0 +1,15 @@
+﻿@model List<QuizGameASP.Models.User>
+
+@{
+    ViewBag.Title = "LoggedUsers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>LoggedUsers</h2>
+
+@foreach (var user in Model)
+{
+    <ul>
+        <li>@Html.DisplayFor(u => user.Login)</li>
+    </ul>
+}

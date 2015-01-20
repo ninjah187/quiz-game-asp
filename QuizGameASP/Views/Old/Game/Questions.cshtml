@@ -1,0 +1,43 @@
+﻿@model List<QuizGameASP.Models.GameQuestion>
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="/Content/Questions.css" />
+
+<div id="question-category-btn-container">
+    <button id="question-category-btn">@Model[0].Category</button>
+</div>
+
+<div class="question-container">
+    <h2 id="question-category">@Html.DisplayFor(q => Model[0].Category)</h2>
+@foreach (var question in Model)
+{
+    <div class="question-content">
+        <!--<p class="question-id">@question.ID</p>-->
+        <span class="question-id" id="@question.ID"></span>
+        <div class="question-question">@Html.DisplayFor(q => question.Content)</div>
+        <div class="question-answers">
+            <button class="question-answer">@Html.DisplayFor(q => question.Answers[0])</button>
+            <br />
+            <button class="question-answer">@Html.DisplayFor(q => question.Answers[1])</button>
+            <br />
+            <button class="question-answer">@Html.DisplayFor(q => question.Answers[2])</button>
+            <br />
+            <button class="question-answer">@Html.DisplayFor(q => question.Answers[3])</button>
+            <br />
+        </div>
+  </div>
+}
+
+    <div class="progress-bar-container">
+    <div class="progress-bar">
+        <div class="progress-bar-under">
+            <div class="progress-bar-above"></div>
+        </div>
+    </div>
+    </div>
+
+</div>
+
+<script src="/Scripts/GameQuestionsScripts.js"></script>

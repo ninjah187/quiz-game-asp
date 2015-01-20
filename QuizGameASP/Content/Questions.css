@@ -1,0 +1,147 @@
+﻿    .question-container
+    {
+        width: 100%;
+        height: auto;
+        /*background-color: #eee;*/
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        display: none;
+    }
+
+    .question-content
+    {
+        text-align: center;
+        width: 100%;
+    }
+
+    #question-category
+    {
+        color: white;
+        background-color: #b2dfff;
+        padding: 10px 10px 10px 10px;
+        margin: 0 0 0 0;
+        font-weight: bold;
+    }
+
+    .question-current
+    {
+       /* visibility: visible;
+        width: auto;
+        height: auto;*/
+       display: block;
+    }
+
+    .question-hidden
+    {
+        /*visibility: hidden;
+        width: 0;
+        height: 0;*/
+        display: none;
+    }
+
+    .question-question
+    {
+        width: 100%;
+        background-color: #5dbbff;
+        color: white;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding: 20px 20px 20px 20px;
+        border-radius: 0px 0px 0px 0px;
+        border-bottom-color: #0094ff;
+        border-bottom-style: solid;
+        border-bottom-width: 4px;
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    .question-answers
+    {
+        width: 100%;
+        background-color: #a0dcff;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 10px 10px 10px 10px;
+    }
+
+    .question-answer
+    {
+        width: 70%;
+        margin: 10px 10px 10px 0px;
+        padding: 10px 10px 10px 10px;
+        border: 0;
+        background-color: #5dbbff;
+        color: white;
+        border-radius: 20px 20px 20px 20px;
+        font-weight: bold;
+    }
+
+        .question-answer:hover
+        {
+            background-color: #b6ffff;
+        }
+
+    .question-id
+    {
+        display: none;
+    }
+
+    .progress-bar-container
+    {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .progress-bar
+    {
+        height: 20px;
+        width: 100%;
+        margin-top: 0px;
+        border-radius: 0px 0px 0px 0px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .progress-bar-under
+    {
+        width: 100%;
+        height: 100%;
+        background-color: #b40202;
+        border-radius: 0px 0px 0px 0px;
+    }
+
+    .progress-bar-above
+    {
+        width: 100%;
+        height: 100%;
+        background-color: #4cff00;
+        border-radius: 0px 0px 0px 0px;
+    }
+
+    #question-category-btn-container
+    {
+        width: 100%;
+        height: 300px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        display: none;
+    }
+
+    #question-category-btn
+    {
+        border: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #5dbbff;
+        color: white;
+        border-radius: 0px 0px 0px 0px;
+        font-weight: bold;
+        font-size: 45px;
+        margin: 0px 0px 0px 0px;
+    }

@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "Result";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="/Content/Result.css" />
+
+<div id="result-content">
+    <h2>Punkty: @ViewBag.Result</h2>
+
+    <div class="result-icon">
+        <div class="result result-left"></div>
+        <div class="result result-center"></div>
+        <div class="result result-right"></div>
+    </div>
+</div>
+
+<script>
+    var result1 = @ViewBag.Question1;
+    var result2 = @ViewBag.Question2;
+    var result3 = @ViewBag.Question3;
+</script>
+<script src="/Scripts/GameResultScripts.js"></script>

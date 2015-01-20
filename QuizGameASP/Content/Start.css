@@ -1,0 +1,24 @@
+﻿    .btn-big-container
+    {
+        width: 100%;
+        height: 300px;
+        /*height: 90vh;*/
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        display: none;
+    }
+
+    .btn-big
+    {
+        border: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #5dbbff;
+        color: white;
+        border-radius: 0px 0px 0px 0px;
+        font-weight: bold;
+        font-size: 60px;
+        margin: 0px 0px 0px 0px;
+    }

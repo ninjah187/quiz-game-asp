@@ -1,0 +1,26 @@
+﻿@model IEnumerable<QuizGameASP.Models.Match>
+
+<!--FORMY CZY JAVASCRIPT?-->
+
+<div class="match-queue-container">
+    <p>Mecze:</p>
+    @foreach (var match in Model)
+    {
+        <form action="/Game/Match?id=@match.ID" method="post">
+            @{
+                string text = match.Player1.Login;
+                text += " vs ";
+                if (match.Player2 == null)
+                {
+                    text += "null";
+                }
+                else
+                {
+                    text += match.Player2.Login;
+                }
+                text += " ID: " + match.ID;
+            }
+            <input type="submit" class="match-queue-button" value="@text">
+        </form>
+    }
+</div>

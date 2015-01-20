@@ -1,0 +1,14 @@
+﻿@model QuizGameASP.Models.User
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Login</h2>
+
+<form action="/Users/LoginResult/" method="post">
+    <input type="text" name="login" />
+    <input type="password" name="password" />
+    <input type="submit" value="Login" />
+</form>

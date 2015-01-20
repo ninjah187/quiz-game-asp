@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/Content/Custom.css" />
+
+<link rel="stylesheet" href="/Content/Start.css" />
+<link rel="stylesheet" href="/Content/CategoryChoose.css" />
+
+<div id="game-content">
+    @Html.Action("Start")
+</div>
+
+<script src="/Scripts/GameStartScripts.js"></script>
