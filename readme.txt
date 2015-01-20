@@ -1,0 +1,1 @@
+-- Project that you are watching is multiplayer, online quiz game developed in technologies: ASP MVC 5 and jQuery (AJAX). --
