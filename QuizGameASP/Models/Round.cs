@@ -12,9 +12,17 @@ namespace QuizGameASP.Models
         public string CategoryName { get; set; }
         public List<GameQuestion> Questions { get; set; }
 
+        //dictionary with pairs <Key, Value> where key is user ID and value is RoundResult of that user
+        //every player sends his result in AJAX after end of each round (see Match.cshtml, Round.cshtml and RoundResult.cshtml)
+        public Dictionary<int, RoundResult> Results { get; private set; } // Dictionary<userID, userResult>
+
         public Round(int number)
         {
             ID = number;
+
+            Questions = null;
+
+            Results = new Dictionary<int, RoundResult>();
         }
 
         public void AddQuestions(IEnumerable<Question> questions)
@@ -25,5 +33,7 @@ namespace QuizGameASP.Models
                 Questions.Add(new GameQuestion(q));
             }
         }
+
+        
     }
 }

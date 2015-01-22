@@ -6,41 +6,49 @@
 }
 
 <style>
-    h2 {
-        text-align: center;
+    body {
+        background-color: #a0dcff;
+        color: white;
     }
+
+     h2 {
+         text-align: center;
+         margin-top: 10px;
+     }
 
     h4.match-player-name {
-        background-color: cadetblue;
+        background-color: #a0dcff;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: 22px;
     }
 
-     #match-container {
-         width: 100%;
-         height: 400px;
-         margin-left: auto;
-         margin-right: auto;
-         background-color: #fffa00;
-         display: flex;
-         flex-flow: row;
-     }
+    #match-container {
+        width: 100%;
+        height: 400px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: #fffa00;
+        display: flex;
+        flex-flow: row;
+    }
 
     .match-player {
         width: 50%;
-        background-color: #008b8b;
         text-align: center;
     }
 
     #p1.match-player {
-        background-color: #b22222;/*chartreuse;*/
+        background-color: #5dbbff;/*chartreuse;*/
     }
 
     #p2.match-player {
-        background-color: #b22222;
+        background-color: #5dbbff;
     }
 
     .match-round-name {
         width: 100%;
-        background-color: azure;
+        background-color: #a0dcff;
         margin-top: 10px;
         margin-bottom: 0px;
     }
@@ -53,46 +61,55 @@
 
     .match-current-player {
         width: 50%;
-        background-color: blue;
+        background-color: #0094ff;
         text-align: center;
     }
 
     .match-current-round {
         color: red;
     }
-</style>
 
-<h2>Match #@Model.ID</h2>
+    #container {
+        margin: 0 0 0 0;
+        padding: 0 0 0 0;
+    }
+</style>
 
 <div id="container">
 
-<div id="match-container">
+    <h2>Mecz</h2>
 
-    <div class="match-player" id="p1">
-        <h4 class="match-player-name">@Model.Player1.Login</h4>
-        @foreach (var round in Model.Rounds)
-        {
-            string className = "r" + round.ID.ToString();
-            <div class="match-round-container @className">
-                <div class="match-round-name">Round @round.ID</div>
-                <div class="match-round-answer-bar"></div>
-            </div>
-        }
+    <div id="match-container">
+
+        <div class="match-player" id="p1">
+            <h4 class="match-player-name">@Model.Player1.Login</h4>
+            @foreach (var round in Model.Rounds)
+            {
+                string className = "r" + round.ID.ToString();
+                <div class="match-round-container @className">
+                    <div class="match-round-name">Round @round.ID</div>
+                    <div class="match-round-answer-bar">
+                        <div id="question1"></div>
+                        <div id="question2"></div>
+                        <div id="question3"></div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="match-player" id="p2">
+            <h4 class="match-player-name">@Model.Player2.Login</h4>
+            @foreach (var round in Model.Rounds)
+            {
+                string className = "r" + round.ID.ToString();
+                <div class="match-round-container @className">
+                    <div class="match-round-name">Round @round.ID</div>
+                    <div class="match-round-answer-bar"></div>
+                </div>
+            }
+        </div>
+
     </div>
-
-    <div class="match-player" id="p2">
-        <h4 class="match-player-name">@Model.Player2.Login</h4>
-        @foreach (var round in Model.Rounds)
-        {
-            string className = "r" + round.ID.ToString();
-            <div class="match-round-container @className">
-                <div class="match-round-name">Round @round.ID</div>
-                <div class="match-round-answer-bar"></div>
-            </div>
-        }
-    </div>
-
-</div>
 
 </div>
 

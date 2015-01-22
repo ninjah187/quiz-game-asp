@@ -9,7 +9,7 @@ namespace QuizGameASP.Controllers
     //Occurs when player doesnt belong to match he's trying to play
     public class WrongMatchException : Exception
     {
-
+        
     }
 
     public class GameController : Controller
@@ -104,11 +104,21 @@ namespace QuizGameASP.Controllers
             return "wrong";
         }
 
-        public ActionResult RoundResult(int matchID, int result, string answerString)
+        public ActionResult RoundResult(int matchID, string answerPoints)
         {
-            //var match = ((List<Match>) HttpContext.Application["MatchmakingQueue"]).Single(m => m.ID == matchID);
-            //match.currentplayer
-            throw new NotImplementedException();
+            var match = ((List<Match>) HttpContext.Application["MatchmakingQueue"]).Single(m => m.ID == matchID);
+
+            string[] answerResultStrings = answerPoints.Split(',');
+            var roundResult = new RoundResult()
+            {
+                Question1 = Int32.Parse(answerResultStrings[0]),
+                Question2 = Int32.Parse(answerResultStrings[1]),
+                Question3 = Int32.Parse(answerResultStrings[2]),
+            };
+
+            match.CurrentRound.Results.Add(((User)Session["User"]).ID, roundResult);
+
+            return PartialView(match);
         }
 
         /*private static readonly Random random = new Random();

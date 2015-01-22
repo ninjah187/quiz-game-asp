@@ -144,6 +144,7 @@
     <Compile Include="Models\GameQuestion.cs" />
     <Compile Include="Models\QuestionDBContext.cs" />
     <Compile Include="Models\Round.cs" />
+    <Compile Include="Models\RoundResult.cs" />
     <Compile Include="Models\TestBot.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserDBContext.cs" />
@@ -186,6 +187,7 @@
     <Content Include="Views\Game\Match.cshtml" />
     <Content Include="Views\Game\CategoryChoose.cshtml" />
     <Content Include="Views\Game\Round.cshtml" />
+    <Content Include="Views\Game\RoundResult.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -19,7 +19,6 @@ D:\Pisane\C#\QuizGameASP\QuizGameASP\bin\EntityFramework.dll
 D:\Pisane\C#\QuizGameASP\QuizGameASP\bin\EntityFramework.SqlServer.dll
 D:\Pisane\C#\QuizGameASP\QuizGameASP\bin\EntityFramework.xml
 D:\Pisane\C#\QuizGameASP\QuizGameASP\bin\EntityFramework.SqlServer.xml
-D:\Pisane\C#\QuizGameASP\QuizGameASP\obj\Debug\QuizGameASP.csprojResolveAssemblyReference.cache
 D:\Pisane\C#\QuizGameASP — kopia\QuizGameASP\bin\QuizGameASP.dll
 D:\Pisane\C#\QuizGameASP — kopia\QuizGameASP\bin\QuizGameASP.pdb
 D:\Pisane\C#\QuizGameASP — kopia\QuizGameASP\bin\EntityFramework.dll
@@ -42,3 +41,4 @@ D:\Pisane\C#\QuizGameASP — kopia\QuizGameASP\bin\System.Web.Mvc.xml
 D:\Pisane\C#\QuizGameASP — kopia\QuizGameASP\obj\Debug\QuizGameASP.dll
 D:\Pisane\C#\QuizGameASP — kopia\QuizGameASP\obj\Debug\QuizGameASP.pdb
 D:\Pisane\C#\QuizGameASP — kopia\QuizGameASP\obj\Debug\QuizGameASP.csprojResolveAssemblyReference.cache
+D:\Pisane\C#\QuizGameASP\QuizGameASP\obj\Debug\QuizGameASP.csprojResolveAssemblyReference.cache

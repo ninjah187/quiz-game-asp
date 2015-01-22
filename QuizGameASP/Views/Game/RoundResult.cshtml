@@ -1,0 +1,40 @@
+﻿@model QuizGameASP.Models.Match
+
+@{
+    ViewBag.Title = "RoundResult";
+}
+
+<style>
+    #round-result-container {
+        width: 100%;
+        height: 300px;
+        text-align: center;
+        background-color: #5dbbff;
+        color: white;
+        margin: 0 0 0 0;
+        display: none;
+    }
+
+    p#round-result-container {
+        font-size: 45px;
+    }
+</style>
+
+<div id="round-result-container">
+    <p>Your result is: @Model.CurrentRound.Results[((QuizGameASP.Models.User)Session["User"]).ID].Total</p>
+</div>
+
+<script>
+    //$("#round-result-container").show("slow");
+    setTimeout(function() {
+        $("#round-result-container").show("slow");
+    }, 500);
+
+    $("#round-result-container").on("click", function () {
+        var matchID = "@Model.ID";
+        $(this).hide("slow");
+        setTimeout(function () {
+            window.location = "/Game/Match?id=" + matchID;
+        }, 500);
+    });
+</script>

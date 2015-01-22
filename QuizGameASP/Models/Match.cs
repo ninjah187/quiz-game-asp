@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Web;
 
 namespace QuizGameASP.Models
@@ -10,7 +11,7 @@ namespace QuizGameASP.Models
         public const int ROUNDS_COUNT = 4;
 
         public int ID { get; set; }
-        private static int id = 0;
+        private static int _id = 0;
 
         public List<Round> Rounds { get; set; }
         public Round CurrentRound { get; set; }
@@ -22,7 +23,7 @@ namespace QuizGameASP.Models
 
         public Match(User player1)
         {
-            ID = ++Match.id;
+            ID = ++Match._id;
             
             Player1 = player1;
             CurrentPlayer = Player1;
@@ -38,9 +39,7 @@ namespace QuizGameASP.Models
 
         private void SwitchPlayers()
         {
-            if (CurrentPlayer == Player1)
-                CurrentPlayer = Player2;
-            else CurrentPlayer = Player1;
+            CurrentPlayer = CurrentPlayer == Player1 ? Player2 : Player1;
         }
     }
 }

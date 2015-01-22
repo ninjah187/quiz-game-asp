@@ -5,37 +5,40 @@
 
 <link rel="stylesheet" href="/Content/Questions.css" />
 
-<div id="question-category-btn-container">
-    <button id="question-category-btn">@Model.CurrentRound.CategoryName</button>
-</div>
+<div id="main-container">
 
-<div class="question-container">
-    <h2 id="question-category">@Html.DisplayFor(c => Model.CurrentRound.CategoryName)</h2>
-@foreach (var question in Model.CurrentRound.Questions)
-{
-    <div class="question-content">
-        <!--<p class="question-id">@question.ID</p>-->
-        <span class="question-id" id="@question.ID"></span>
-        <div class="question-question">@Html.DisplayFor(q => question.Content)</div>
-        <div class="question-answers">
-            <button class="question-answer">@Html.DisplayFor(q => question.Answers[0])</button>
-            <br />
-            <button class="question-answer">@Html.DisplayFor(q => question.Answers[1])</button>
-            <br />
-            <button class="question-answer">@Html.DisplayFor(q => question.Answers[2])</button>
-            <br />
-            <button class="question-answer">@Html.DisplayFor(q => question.Answers[3])</button>
-            <br />
-        </div>
-  </div>
-}
-
-    <div class="progress-bar-container">
-    <div class="progress-bar">
-        <div class="progress-bar-under">
-            <div class="progress-bar-above"></div>
-        </div>
+    <div id="question-category-btn-container">
+        <button id="question-category-btn">@Model.CurrentRound.CategoryName</button>
     </div>
+
+    <div class="question-container">
+        <h2 id="question-category">@Html.DisplayFor(c => Model.CurrentRound.CategoryName)</h2>
+        @foreach (var question in Model.CurrentRound.Questions)
+        {
+            <div class="question-content">
+                <!--<p class="question-id">@question.ID</p>-->
+                <span class="question-id" id="@question.ID"></span>
+                <div class="question-question">@Html.DisplayFor(q => question.Content)</div>
+                <div class="question-answers">
+                    <button class="question-answer">@Html.DisplayFor(q => question.Answers[0])</button>
+                    <br/>
+                    <button class="question-answer">@Html.DisplayFor(q => question.Answers[1])</button>
+                    <br/>
+                    <button class="question-answer">@Html.DisplayFor(q => question.Answers[2])</button>
+                    <br/>
+                    <button class="question-answer">@Html.DisplayFor(q => question.Answers[3])</button>
+                    <br/>
+                </div>
+            </div>
+        }
+        <div class="progress-bar-container">
+            <div class="progress-bar">
+                <div class="progress-bar-under">
+                    <div class="progress-bar-above"></div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 </div>
@@ -114,9 +117,27 @@
 
         if (questionNumber >= 3) {
             //alert("Twój wynik to: " + points);
-            var matchID = "@Model.ID";
-            window.location = "/Game/RoundResult?matchID=" + matchID + "&result=" + points +
-                "&answerString=" + answerString;
+            var mID = "@Model.ID";
+            //window.location = "/Game/RoundResult?matchID=" + matchID + "&result=" + points +
+            //    "&answerString=" + answerString;
+            $.ajax({
+                url: "/Game/RoundResult/",
+                type: "POST",
+                data: {
+                    matchID: mID,
+                    answerPoints: answerString,
+                },
+                dataType: "html",
+                success: function(data) {
+                    $("#main-container").append(data);
+                },
+                error: function() {
+                    alert("BŁĄD");
+                },
+                complete: function() {
+                    
+                }
+            });
             return;
         }
 
