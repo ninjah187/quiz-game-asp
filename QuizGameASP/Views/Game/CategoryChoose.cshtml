@@ -2,6 +2,40 @@
 
 <!--<link href="/Content/CategoryChoose.css" rel="stylesheet" type="text/css" />-->
 
+<style>
+    #category-container {
+        width: 100%;
+        display: none;
+    }
+
+     .category-form
+     {
+         margin-left: auto;
+         margin-right: auto;
+         width: 80%;
+     }
+
+    .category-button
+    {
+        width: 100%;
+        height: 70px;
+        background-color: #5dbbff;
+        border-radius: 20px 20px 20px 20px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 20px;
+        border: 0;
+        font-weight: bold;
+        font-size: 30px;
+        color: white;
+    }
+
+    .category-button:hover
+    {
+        background-color: #b6ffff;
+    }
+</style>
+
 <div id="category-container">
 @{
     foreach (var category in Model)
@@ -17,7 +51,9 @@
 </div>
 
 <script>
-    $("#category-container").show("slow");
+    setTimeout(function() {
+        $("#category-container").show("slow");
+    }, 500);
 
     $(".category-button").click(function() {
         var category = $(this).text();

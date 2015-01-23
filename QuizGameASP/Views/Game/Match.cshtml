@@ -72,6 +72,7 @@
     #container {
         margin: 0 0 0 0;
         padding: 0 0 0 0;
+        display: none;
     }
 </style>
 
@@ -89,9 +90,20 @@
                 <div class="match-round-container @className">
                     <div class="match-round-name">Round @round.ID</div>
                     <div class="match-round-answer-bar">
-                        <div id="question1"></div>
+                        <!--<div id="question1"></div>
                         <div id="question2"></div>
-                        <div id="question3"></div>
+                        <div id="question3"></div>-->
+                        @{
+                            //round.Results[Model.Player1.ID].Total
+                            try
+                            {
+                                @round.Results[Model.Player1.ID].Total
+                            }
+                            catch (KeyNotFoundException exc)
+                            {
+                                
+                            }
+                        }
                     </div>
                 </div>
             }
@@ -104,7 +116,22 @@
                 string className = "r" + round.ID.ToString();
                 <div class="match-round-container @className">
                     <div class="match-round-name">Round @round.ID</div>
-                    <div class="match-round-answer-bar"></div>
+                    <div class="match-round-answer-bar">
+                        <!--<div id="question1"></div>
+                        <div id="question2"></div>
+                        <div id="question3"></div>-->
+                        @{
+                            //round.Results[Model.Player1.ID].Total
+                            try
+                            {
+                                @round.Results[Model.Player2.ID].Total
+                            }
+                            catch (KeyNotFoundException exc)
+                            {
+                                
+                            }
+                        }
+                    </div>
                 </div>
             }
         </div>
@@ -114,6 +141,8 @@
 </div>
 
 <script>
+    $("#container").show("slow");
+
     function setCurrentPlayer(playerID) {
         $(playerID).removeClass("match-player");
         $(playerID).addClass("match-current-player");
@@ -134,7 +163,7 @@
         };
         currentPlayer.children(".match-current-round").on("click",
             function () { eventHandler(senderID, currentUserID) }
-            );
+        );
     }
 
     function getCategories() {

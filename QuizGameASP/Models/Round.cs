@@ -33,7 +33,6 @@ namespace QuizGameASP.Models
                 Questions.Add(new GameQuestion(q));
             }
         }
-
         
     }
 }

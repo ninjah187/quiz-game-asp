@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using System.Web.Routing;
 using QuizGameASP.Models;
 
 namespace QuizGameASP.Controllers
@@ -118,7 +119,38 @@ namespace QuizGameASP.Controllers
 
             match.CurrentRound.Results.Add(((User)Session["User"]).ID, roundResult);
 
-            return PartialView(match);
+            int result = roundResult.Total;
+
+            //TESTING
+            //match.NextRoundWithTestBot();
+
+            //IMPORTANT! Occurs ONLY when Player1 is me
+            if (match.CurrentPlayer.ID == match.Player1.ID)
+            {
+                var categories = dbContext.Categories.ToList();
+                int x = random.Next(categories.Count);
+                var category = categories[x];
+
+                var questions = dbContext.Questions.Where(q => q.CategoryID == category.ID).ToList();
+                var roundQuestions = new List<Question>();
+                for (int i = 0; i < 3; i++)
+                {
+                    int y = random.Next(questions.Count);
+                    var question = questions[y];
+                    roundQuestions.Add(question);
+                    questions.RemoveAt(y);
+                }
+
+                match.NextRoundWithTestBot(roundQuestions);
+            }
+            else
+            {
+                match.NextRoundWithTestBot();
+            }
+
+            //return Redirect("/Game/Match?matchID=" + match.ID.ToString());
+            return RedirectToAction("Match", new {id = match.ID});
+            //return PartialView(match);
         }
 
         /*private static readonly Random random = new Random();

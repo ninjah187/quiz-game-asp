@@ -152,23 +152,24 @@
     }
 
     function addAnswerClickHandlers() {
-        /*for (i = 0; i < questions.length; i++) {
+        for (i = 0; i < questions.length; i++) {
             var answers = $(questions[i]).children(".question-answers").children(".question-answer");
             $(answers).on("click", answerClickEventHandler);
-        }*/
+        }
 
         //turns on click handler only in current question, not in all questions, like before
-        var answer = $(".question-current").children(".question-answers").children(".question-answer");
-        answer.on("click", answerClickEventHandler);
+        /*var answer = $(".question-current").children(".question-answers").children(".question-answer");
+        answer.on("click", answerClickEventHandler);*/
     }
 
     function removeAnswerClickHandlers() {
-        /*for (i = 0; i < questions.length; i++) {
+        for (i = 0; i < questions.length; i++) {
             var answers = $(questions[i]).children(".question-answers").children(".question-answer");
             $(answers).off("click", answerClickEventHandler);
-        }*/
-        var answer = $(".question-current").children(".question-answers").children(".question-answer");
-        answer.off("click", answerClickEventHandler);
+        }
+
+        /*var answer = $(".question-current").children(".question-answers").children(".question-answer");
+        answer.off("click", answerClickEventHandler);*/
     }
 
     var questionContainer = $(".question-container");

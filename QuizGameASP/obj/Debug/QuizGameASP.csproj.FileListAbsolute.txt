@@ -41,4 +41,3 @@ D:\Pisane\C#\QuizGameASP — kopia\QuizGameASP\bin\System.Web.Mvc.xml
 D:\Pisane\C#\QuizGameASP — kopia\QuizGameASP\obj\Debug\QuizGameASP.dll
 D:\Pisane\C#\QuizGameASP — kopia\QuizGameASP\obj\Debug\QuizGameASP.pdb
 D:\Pisane\C#\QuizGameASP — kopia\QuizGameASP\obj\Debug\QuizGameASP.csprojResolveAssemblyReference.cache
-D:\Pisane\C#\QuizGameASP\QuizGameASP\obj\Debug\QuizGameASP.csprojResolveAssemblyReference.cache

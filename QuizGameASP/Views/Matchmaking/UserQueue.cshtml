@@ -2,11 +2,20 @@
 
 <!--FORMY CZY JAVASCRIPT?-->
 
+<style>
+    .match-queue-title {
+        text-align: center;
+        color: white;
+    }
+</style>
+
 <div class="match-queue-container">
-    <p>Mecze:</p>
+    <div class="match-queue-title">
+        <h2>Mecze</h2>
+    </div>
     @foreach (var match in Model)
     {
-        <form action="/Game/Match?id=@match.ID" method="post">
+        <form action="/Game/Match?id=@match.ID" method="post" class="menu-form">
             @{
                 string text = match.Player1.Login;
                 text += " vs ";
@@ -20,7 +29,7 @@
                 }
                 text += " ID: " + match.ID;
             }
-            <input type="submit" class="match-queue-button" value="@text">
+            <input type="submit" class="menu-button" value="@text">
         </form>
     }
 </div>
